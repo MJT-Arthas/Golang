@@ -1,22 +1,28 @@
 package controller
 
 import (
-	"textProject/src/common/constant"
-	"textProject/src/common/response"
+	"textProject/src/domain/query"
+	"textProject/src/repository"
+	"textProject/src/service"
 
 	"github.com/gin-gonic/gin"
 )
 
 type UserController struct {
+	userService service.IUserService
 }
 
 func UserRegister(userGrp *gin.RouterGroup) {
-	userController := &UserController{}
+	userRepository := repository.NewUserManagerRepository()
+	userService := service.NewUserService(userRepository)
+	userController := &UserController{userService: userService}
 
-	userGrp.Use().GET("/list", userController.findUser)
+	userGrp.Use().GET("/findUser", userController.findUser)
 }
 
-func (c UserController) findUser(ctx *gin.Context) {
+func (uc UserController) findUser(ctx *gin.Context) {
+	var userQuery query.FindUserQuery
 
-	response.Success(ctx, constant.SelectSuccessCode, constant.SelectSuccessMsg, gin.H{"userName": "月影"})
+	_ = ctx.Bind(&userQuery)
+	uc.userService.FindUserInfo(ctx, &userQuery.UserId)
 }

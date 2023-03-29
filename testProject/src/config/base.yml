@@ -1,0 +1,14 @@
+server:
+  port: 8848
+
+# 数据源配置
+datasource:
+  driverName: localhost_3306
+  host: localhost
+  port: "3306"
+  dbname: gorm
+  username: root
+  password: 19960227
+  charset: utf8
+  sslmode: disable
+  loc: Asia/Shanghai

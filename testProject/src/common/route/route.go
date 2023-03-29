@@ -18,6 +18,7 @@ func PathRoute(r *gin.Engine) *gin.Engine {
 	}
 
 	r.LoadHTMLGlob("templates/*")
+
 	r.GET("/index", func(context *gin.Context) {
 		context.HTML(http.StatusOK, "index.html", gin.H{"title": "gin web页面"})
 	})

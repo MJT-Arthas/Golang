@@ -9,6 +9,6 @@ const (
 )
 
 const (
-	SelectFailureCode ResponseCode = 500
-	SelectFailureMsg  ResponseMsg  = "卒了"
+	DataIsNilCode ResponseCode = 500
+	DataIsNilMsg  ResponseMsg  = "卒了"
 )
