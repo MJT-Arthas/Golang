@@ -2,7 +2,6 @@ package route
 
 import (
 	"net/http"
-	"textProject/src/common/midware"
 	"textProject/src/controller"
 
 	"github.com/gin-gonic/gin"
@@ -10,17 +9,18 @@ import (
 
 func PathRoute(r *gin.Engine) *gin.Engine {
 
+	r.LoadHTMLGlob("templates/*")
+	// r.LoadHTMLFiles("templates/index.html")
+	r.GET("/", func(context *gin.Context) {
+		context.HTML(http.StatusOK, "index.tepl", gin.H{"title": "gin web页面"})
+	})
+
 	gapi := r.Group("/gapi")
 	{
-		gapi.Use(midware.MiddleW())
+		// gapi.Use(midware.MiddleW())
 		controller.UserRegister(gapi)
 
 	}
 
-	r.LoadHTMLGlob("templates/*")
-
-	r.GET("/index", func(context *gin.Context) {
-		context.HTML(http.StatusOK, "index.html", gin.H{"title": "gin web页面"})
-	})
 	return r
 }

@@ -21,8 +21,9 @@ func UserRegister(userGrp *gin.RouterGroup) {
 }
 
 func (uc UserController) findUser(ctx *gin.Context) {
-	var userQuery query.FindUserQuery
+	var userQuery query.StructA
 
-	_ = ctx.Bind(&userQuery)
+	_ = ctx.ShouldBind(&userQuery)
+
 	uc.userService.FindUserInfo(ctx, &userQuery.UserId)
 }
