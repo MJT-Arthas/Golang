@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 type student struct {
 	id    int
 	name  string
@@ -31,5 +33,10 @@ func (s *studentMgr) editStudent(newStu *student) {
 		if student.id == newStu.id {
 			s.allStudent[i] = newStu
 		}
+	}
+}
+func (s *studentMgr) showAllStudent() {
+	for _, student := range s.allStudent {
+		fmt.Println(student.id, student.name, student.class)
 	}
 }
