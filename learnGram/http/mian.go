@@ -33,11 +33,12 @@ type Actress struct {
 var wg sync.WaitGroup
 
 func main() { // 普通JSON
-	for i := 0; i < 10; i++ {
+	for i := 0; i < 100; i++ {
 		wg.Add(1) // 启动一个goroutine就登记+1
 		go fetch()
 	}
 	wg.Wait() // 等待所有登记的goroutine都结束
+
 }
 
 func fetch() {

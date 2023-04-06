@@ -3,7 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"sync"
 )
@@ -18,7 +18,7 @@ type TimeInfo struct {
 	Second    interface{} `json:"second"`
 }
 
-type Respoms struct {
+type Responses struct {
 	Code    string     `json:"code"`
 	Message string     `json:"message"`
 	Data    []LineInfo `json:"data"`
@@ -89,9 +89,9 @@ func fetch(currentStation string, resultChan chan []LineInfo) {
 	resp, err := http.Get(url)
 	if err == nil {
 
-		body, err := ioutil.ReadAll(resp.Body)
+		body, err := io.ReadAll(resp.Body)
 
-		var res Respoms
+		var res Responses
 
 		err = json.Unmarshal(body, &res)
 		if err != nil {

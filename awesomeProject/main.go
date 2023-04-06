@@ -1,13 +1,25 @@
 package main
 
-import "fmt"
-
-type user struct {
-	id   int
-	name string
-}
+import "github.com/gin-gonic/gin"
 
 func main() {
-	u := user{id: 0, name: "arthas"}
-	fmt.Print(u)
+	router := gin.Default()
+
+	// 简单的路由组: v1
+	v1 := router.Group("/gapi")
+	{
+		v1.GET("/", func(context *gin.Context) {
+			context.JSON(200, gin.H{
+				"message": "hello world",
+			})
+		})
+		v1.GET("/test", func(context *gin.Context) {
+			context.JSON(200, gin.H{
+				"message": "test",
+			})
+		})
+
+	}
+
+	router.Run(":3001")
 }
