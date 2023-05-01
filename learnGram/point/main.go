@@ -16,4 +16,9 @@ func main() {
 	fmt.Println(a) // 10
 	modify2(&a)
 	fmt.Println(a) // 100
+	for _, val := range "abc" {
+
+		fmt.Println(int(val) - int('a'))
+	}
+
 }

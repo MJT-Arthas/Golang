@@ -13,9 +13,9 @@ func fetchUrlDemo2() error {
 	//g := new(errorgroup.Group) // 创建等待组（类似sync.WaitGroup）
 	var g errgroup.Group
 	var urls = []string{
-		//"http://pkg.go.dev",
+		"http://pkg.go.dev",
 		"http://www.liwenzhou.com",
-		//"http://www.yixieqitawangzhi.com",
+		"http://www.yixieqitawangzhi.com",
 	}
 	for _, url := range urls {
 		url := url // 注意此处声明新的变量

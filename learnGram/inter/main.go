@@ -28,11 +28,11 @@ func (d Dog) Move() {
 
 func main() {
 	var d = Dog{Name: "旺财"}
-	d.Move()
-	d.Say()
-	//var s Sayer = d
-	//var m Mover = d
+
+	var s Sayer = d
+	var m Mover = d
 	//
-	//s.Say()  // 对Sayer类型调用Say方法
-	//m.Move() // 对Mov
+	
+	s.Say()  // 对Sayer类型调用Say方法
+	m.Move() // 对Mov
 }
